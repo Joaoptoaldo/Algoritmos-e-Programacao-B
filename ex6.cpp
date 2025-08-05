@@ -36,7 +36,8 @@ int main() {
                     cin >> carro.placa;
                     cout << "Hora de entrada: ";
                     cin >> carro.horaEntrada;
-                    
+
+                    //verificar se o carro(placa) já esta na garagem
 
                     garagem[ quantidadeCarros ] = carro;
                     quantidadeCarros++;
@@ -68,4 +69,5 @@ int main() {
  
     return 1;
 }
+
  
