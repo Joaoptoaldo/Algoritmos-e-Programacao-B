@@ -28,22 +28,35 @@ int main() {
  
         switch (opcao) {
             case 1:
-                cout << "Entrada do carro na garagem....\n";
-                if (quantidadeCarros == TAM) {
-                    cout << "Nao ha vagas na garagem....\n";
-                } else {
-                    cout << "Placa: ";
-                    cin >> carro.placa;
-                    cout << "Hora de entrada: ";
-                    cin >> carro.horaEntrada;
+    cout << "Entrada do carro na garagem....\n";
+    if (quantidadeCarros == TAM) {
+        cout << "Nao ha vagas na garagem....\n";
+    } else {
+        cout << "Placa: ";
+        cin >> carro.placa;
 
-                    //verificar se o carro(placa) já esta na garagem
-
-                    garagem[ quantidadeCarros ] = carro;
-                    quantidadeCarros++;
-                    cout << "Imprimindo o ticket....\n";
-                }
+        //verificação se o carro (placa) já está na garagem
+        bool carroJaExiste = false;
+        for (int i = 0; i < quantidadeCarros; i++) {
+            if (garagem[i].placa == carro.placa) {
+                carroJaExiste = true;
                 break;
+            }
+        }
+
+        if (carroJaExiste) {
+            cout << "Este carro ja esta na garagem!\n";
+        } else {
+            cout << "Hora de entrada: ";
+            cin >> carro.horaEntrada;
+
+            garagem[quantidadeCarros] = carro;
+            quantidadeCarros++;
+            cout << "Imprimindo o ticket....\n";
+        }
+    }
+    break;
+
             case 2:
                 cout << "Saindo carro na garagem....\n";
                 break;
@@ -71,3 +84,4 @@ int main() {
 }
 
  
+
