@@ -25,9 +25,9 @@ int main() {
     }
 
     if (estaOrdenado(v, n))
-        cout << "Vetor esta ordenado." << endl;
+        cout << "Vetor esta ordenado" << endl;
     else
-        cout << "Vetor NAO esta ordenado." << endl;
+        cout << "Vetor nao esta ordenado" << endl;
 
     return 0;
 }
