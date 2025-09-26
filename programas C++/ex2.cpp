@@ -1,5 +1,5 @@
-/*fazer um programa e dentro dele um método que receba o dia (string), o mês (string) e o ano (string). 
-O método deve escrever 'DATA VÁLIDA' ou 'DATA INVÁLIDA' para a situação das variáveis passadas.*/
+/*fazer um programa e dentro dele um mÃ©todo que receba o dia (string), o mÃªs (string) e o ano (string). 
+O mÃ©todo deve escrever 'DATA VÃLIDA' ou 'DATA INVÃLIDA' para a situaÃ§Ã£o das variÃ¡veis passadas.*/
 
 #include <iostream>
 #include <string>
