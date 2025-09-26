@@ -1,4 +1,4 @@
-/*fazer um programa que tenha um método que receba uma frase e retorne a quantidade de vogais presentes na frase.*/
+/*fazer um programa que tenha um mÃ©todo que receba uma frase e retorne a quantidade de vogais presentes na frase.*/
 
 #include <iostream>
 #include <string>
