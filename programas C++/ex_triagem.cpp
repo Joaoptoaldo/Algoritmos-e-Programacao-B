@@ -16,7 +16,7 @@ struct Paciente {
 
 struct Profissional {
     string nome;
-    string funcao; // Médico, enfermeiro, etc
+    string funcao; // MÃ©dico, enfermeiro, etc
 };
 
 struct UnidadeAtendimento {
@@ -24,22 +24,22 @@ struct UnidadeAtendimento {
     string endereco;
 };
 
-// Função para calcular urgência com base na pontuação
+// FunÃ§Ã£o para calcular urgÃªncia com base na pontuaÃ§Ã£o
 string calcularUrgencia(int pontuacao) {
     if (pontuacao >= 10)
-        return "Alta urgência";
+        return "Alta urgÃªncia";
     else if (pontuacao >= 5)
-        return "Média urgência";
+        return "MÃ©dia urgÃªncia";
     else
-        return "Baixa urgência";
+        return "Baixa urgÃªncia";
 }
 
-// Função para triagem de sintomas
+// FunÃ§Ã£o para triagem de sintomas
 int triagemSintomas() {
     int pontuacao = 0;
     char resposta;
 
-    cout << "Responda com S para sim ou N para não aos sintomas abaixo:\n";
+    cout << "Responda com S para sim ou N para nÃ£o aos sintomas abaixo:\n";
 
     cout << "Febre: ";
     cin >> resposta;
@@ -53,7 +53,7 @@ int triagemSintomas() {
     cin >> resposta;
     if (resposta == 'S' || resposta == 's') pontuacao += 1;
 
-    cout << "Vômito: ";
+    cout << "VÃ´mito: ";
     cin >> resposta;
     if (resposta == 'S' || resposta == 's') pontuacao += 2;
 
@@ -68,7 +68,7 @@ int triagemSintomas() {
     return pontuacao;
 }
 
-// Função para cadastrar paciente
+// FunÃ§Ã£o para cadastrar paciente
 Paciente cadastrarPaciente() {
     Paciente p;
     cout << "Nome do paciente: ";
@@ -91,12 +91,12 @@ Paciente cadastrarPaciente() {
     cout << "\n--- Triagem de sintomas ---\n";
     p.pontuacao = triagemSintomas();
 
-    cout << "\nPaciente cadastrado com urgência: " << calcularUrgencia(p.pontuacao) << endl;
+    cout << "\nPaciente cadastrado com urgÃªncia: " << calcularUrgencia(p.pontuacao) << endl;
 
     return p;
 }
 
-// Função principal com menu
+// FunÃ§Ã£o principal com menu
 int main() {
     vector<Paciente> pacientes;
     vector<Profissional> profissionais;
@@ -108,12 +108,12 @@ int main() {
         cout << "\n--- Sistema de Triagem COVID ---\n";
         cout << "1. Cadastrar paciente\n";
         cout << "2. Listar pacientes\n";
-        cout << "3. Cadastrar profissional de saúde\n";
+        cout << "3. Cadastrar profissional de saÃºde\n";
         cout << "4. Listar profissionais\n";
         cout << "5. Cadastrar unidade de atendimento\n";
         cout << "6. Listar unidades\n";
         cout << "0. Sair\n";
-        cout << "Escolha uma opção: ";
+        cout << "Escolha uma opÃ§Ã£o: ";
         cin >> opcao;
 
         switch(opcao) {
@@ -130,7 +130,7 @@ int main() {
                          << " | Nascimento: " << pacientes[i].dataNascimento
                          << " | Altura: " << pacientes[i].altura
                          << " | Peso: " << pacientes[i].peso
-                         << " | Urgência: " << calcularUrgencia(pacientes[i].pontuacao) << endl;
+                         << " | UrgÃªncia: " << calcularUrgencia(pacientes[i].pontuacao) << endl;
                 }
                 break;
             }
@@ -139,7 +139,7 @@ int main() {
                 cout << "Nome do profissional: ";
                 cin.ignore();
                 getline(cin, prof.nome);
-                cout << "Função: ";
+                cout << "FunÃ§Ã£o: ";
                 getline(cin, prof.funcao);
                 profissionais.push_back(prof);
                 break;
@@ -148,7 +148,7 @@ int main() {
                 cout << "\n--- Lista de profissionais ---\n";
                 for (int i = 0; i < profissionais.size(); i++) {
                     cout << i+1 << ". " << profissionais[i].nome
-                         << " | Função: " << profissionais[i].funcao << endl;
+                         << " | FunÃ§Ã£o: " << profissionais[i].funcao << endl;
                 }
                 break;
             }
@@ -157,7 +157,7 @@ int main() {
                 cout << "Nome da unidade: ";
                 cin.ignore();
                 getline(cin, u.nome);
-                cout << "Endereço: ";
+                cout << "EndereÃ§o: ";
                 getline(cin, u.endereco);
                 unidades.push_back(u);
                 break;
@@ -166,7 +166,7 @@ int main() {
                 cout << "\n--- Lista de unidades ---\n";
                 for (int i = 0; i < unidades.size(); i++) {
                     cout << i+1 << ". " << unidades[i].nome
-                         << " | Endereço: " << unidades[i].endereco << endl;
+                         << " | EndereÃ§o: " << unidades[i].endereco << endl;
                 }
                 break;
             }
@@ -174,7 +174,7 @@ int main() {
                 cout << "Saindo do sistema...\n";
                 break;
             default:
-                cout << "Opção inválida! Tente novamente.\n";
+                cout << "OpÃ§Ã£o invÃ¡lida! Tente novamente.\n";
         }
 
     } while(opcao != 0);
