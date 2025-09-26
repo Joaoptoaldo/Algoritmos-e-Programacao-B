@@ -1,5 +1,5 @@
-/*fazer um programa e dentro dele um método que receba uma palavra (do tipo string) e uma letra (do tipo char). 
-O método deve contar quantas vezes a letra aparece na palavra e exibir essa quantidade;*/
+/*fazer um programa e dentro dele um mÃ©todo que receba uma palavra (do tipo string) e uma letra (do tipo char). 
+O mÃ©todo deve contar quantas vezes a letra aparece na palavra e exibir essa quantidade;*/
 
 #include <iostream>
 #include <string>
