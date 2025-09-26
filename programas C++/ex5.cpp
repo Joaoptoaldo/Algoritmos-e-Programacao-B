@@ -1,4 +1,4 @@
-/*fazer um programa que tenha um método que receba um vetor de números inteiros, 
+/*fazer um programa que tenha um mÃ©todo que receba um vetor de nÃºmeros inteiros, 
 o tamanho desse vetor e retorne true se o vetor estiver ordenado ou false se o vetor estiver desordenado.*/
 
 #include <iostream>
