@@ -1,4 +1,4 @@
-/*fazer um programa que tenha um método que receba uma frase e retorne essa frase totalmente em maiúscula.*/
+/*fazer um programa que tenha um mÃ©todo que receba uma frase e retorne essa frase totalmente em maiÃºscula.*/
 
 #include <iostream>
 #include <string>
