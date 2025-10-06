@@ -1,5 +1,82 @@
 #include <sstream>
 #include <fstream>
+#include <string>
+#include <metodos.h>
+#include <iostream>
+
+void split(string vetor[], string str, string deli = " ")
+{        
+    int start = 0;
+    int end = str.find(deli);
+    int i = 0;
+    while (end != -1) {
+        vetor[i] = str.substr(start, end - start);
+        i++;
+        start = end + deli.size();
+        end = str.find(deli, start);
+    }
+    vetor[i] = str.substr(start, end - start);
+}
+
+int conectarBase(string baseDados, Pessoa vetor[], int tamanho){
+    int qtd_pesssoas = 0;
+    ifstream procuradorArquivo; //tipo de arquivo para leitura
+    procuradorArquivo.open(baseDados);
+
+    if (!procuradorArquivo) { //caso arquivo nao exista
+        cout << "Arquivo inexistente!" << endl;
+        return 0;
+    }
+    if(qtd == tamanho){
+        cout << "Arquivo inexistente!" << endl;
+        return 0;
+    }
+
+    //le o arquivo capturando as frases
+    string linha;
+    string vetorLinha[2]; //nome, email
+    while (!procuradorArquivo.eof()) {
+        getline(procuradorArquivo,linha); //lendo a linha inteira
+        split(vetorLinha, linha, ",");
+        vetor[qtd_pesssoas].nome = vetorLinha[0];   
+        vetor[qtd_pesssoas].email = vetorLinha[1];
+        qtd_pesssoas += 1;
+ 
+    }
+
+    procuradorArquivo.close();
+    return qtd_pesssoas;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 bool inserirLista(string nome, string listaNomes[], int *quantidadeNomes, int tamanho) {
