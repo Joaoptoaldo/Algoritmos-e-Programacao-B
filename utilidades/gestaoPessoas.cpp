@@ -1,6 +1,6 @@
 #include<iostream>
 #include<string>
-#define TAM 1000
+#define TAM 10
 
 using namespace std;
 
@@ -10,16 +10,11 @@ using namespace std;
 
 int main(){
     Pessoa vetor[TAM];
-    int qtd_pessoas = 0;
-    string baseDados = "base_dados.csv";
+    int qtd_pessoas;
+    string baseDados = "base.csv";
 
-    conectarBase(baseDados, vetor, &qtd_pessoas, TAM);
-    menu(vetor, TAM, qtd_pessoas);
-
-    for(int i=0; i<qtd_pessoas; i++){
-        cout << vetor[i].nome << " - " << vetor[i].email << endl;
-    }
-
+    qtd_pessoas = conectarBase(baseDados, vetor, TAM);
+    menu(vetor, TAM, qtd_pessoas, baseDados);
 
     return 1;
 }

@@ -1,22 +1,69 @@
 #include <sstream>
 #include <fstream>
 #include <string>
-#include <metodos.h>
-#include <iostream>
 
-void split(string vetor[], string str, string deli = " ")
-{        
+
+void listarPessoas(Pessoa vetor[], int qtdPessoas){
+    cout << "Listar pessoas..." << endl;
+    for (int i = 0; i < qtdPessoas; i++){
+        cout << "Nome: " << vetor[i].nome << endl;
+        cout << "Email: "<< vetor[i].email << endl;
+    }
+
+    cout << "\n";
+    cout << "Total de registros: " << qtdPessoas << endl;
+}
+
+int cadastrarPessoa(Pessoa vetor[], int tamanho, int qtd_pessoas, string baseDados) {
+    cout << "Cadastrar pessoas...\n";
+
+
+
+
+    return qtd_pessoas;
+}
+
+void menu(Pessoa vetor[], int tamanho, int qtd_pessoas, string baseDados){
+    int opcao;
+    do{
+        //system("cls");
+        cout << "MENU\n";
+        cout << "1 - Listar pessoas\n";
+        cout << "2 - Cadastrar pessoas\n";
+        cout << "3 - Sair\n";
+        cin >> opcao;
+        getchar();
+
+        switch (opcao){
+            case 1:
+                listarPessoas(vetor, qtd_pessoas);
+                break;            
+            case 2:                
+                qtd_pessoas = cadastrarPessoa(vetor, TAM, qtd_pessoas, baseDados)
+                break;
+            case 3:
+                break;
+            default:
+                cout << "Opção invalida\n";
+                break;
+        }
+
+    }while(opcao != 3);
+}
+
+void split(string vetor[], string str, string deli = " "){
     int start = 0;
     int end = str.find(deli);
     int i = 0;
     while (end != -1) {
         vetor[i] = str.substr(start, end - start);
-        i++;
-        start = end + deli.size();
+         i++;
+         start = end + deli.size();
         end = str.find(deli, start);
     }
-    vetor[i] = str.substr(start, end - start);
-}
+    //vetor[i] = str.substr(start, end - start);
+    vetor[i] = str.substr(start);
+ }
 
 int conectarBase(string baseDados, Pessoa vetor[], int tamanho){
     int qtd_pesssoas = 0;
@@ -25,11 +72,11 @@ int conectarBase(string baseDados, Pessoa vetor[], int tamanho){
 
     if (!procuradorArquivo) { //caso arquivo nao exista
         cout << "Arquivo inexistente!" << endl;
-        return 0;
+        exit(0);
     }
-    if(qtd == tamanho){
+    if (qtd_pesssoas == tamanho){
         cout << "Arquivo inexistente!" << endl;
-        return 0;
+        exit(0);
     }
 
     //le o arquivo capturando as frases
@@ -48,36 +95,6 @@ int conectarBase(string baseDados, Pessoa vetor[], int tamanho){
     return qtd_pesssoas;
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 bool inserirLista(string nome, string listaNomes[], int *quantidadeNomes, int tamanho) {
     if (*quantidadeNomes == tamanho) {
@@ -112,22 +129,22 @@ void exibirListaNomes(string listaNomes[], int quantidadeNomes) {
     }
 }
 
-int conectarBase(string listaNomes[], string nomeBaseDados, int tamanho) {
-    ifstream procuradorArquivo; //tipo de arquivo para leitura
-    procuradorArquivo.open(nomeBaseDados); 
+// int conectarBase(string listaNomes[], string nomeBaseDados, int tamanho) {
+//     ifstream procuradorArquivo; //tipo de arquivo para leitura
+//     procuradorArquivo.open(nomeBaseDados); 
 
-    string linha;
-    int quantidadeNomes = 0;
-    while (!procuradorArquivo.eof() && quantidadeNomes < tamanho) {
-		getline(procuradorArquivo,linha); //lendo a linha inteira
-        listaNomes[quantidadeNomes] = linha; //a linha tem um nome completo
-        quantidadeNomes++;
-	}
+//     string linha;
+//     int quantidadeNomes = 0;
+//     while (!procuradorArquivo.eof() && quantidadeNomes < tamanho) {
+// 		getline(procuradorArquivo,linha); //lendo a linha inteira
+//         listaNomes[quantidadeNomes] = linha; //a linha tem um nome completo
+//         quantidadeNomes++;
+// 	}
   
-    procuradorArquivo.close();
+//     procuradorArquivo.close();
 
-    return quantidadeNomes;
-}
+//     return quantidadeNomes;
+// }
 
 
 int contarVogais(string frase) {
