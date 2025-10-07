@@ -39,7 +39,7 @@ void menu(Pessoa vetor[], int tamanho, int qtd_pessoas, string baseDados){
                 listarPessoas(vetor, qtd_pessoas);
                 break;            
             case 2:                
-                qtd_pessoas = cadastrarPessoa(vetor, TAM, qtd_pessoas, baseDados)
+                qtd_pessoas = cadastrarPessoa(vetor, TAM, qtd_pessoas, baseDados);
                 break;
             case 3:
                 break;
