@@ -1,9 +1,12 @@
 #include <sstream>
 #include <fstream>
+#include <locale>
 #include <string>
 
-
 void listarPessoas(Pessoa vetor[], int qtdPessoas){
+
+    setlocale(LC_ALL, "");
+
     cout << "Listar pessoas..." << endl;
     for (int i = 0; i < qtdPessoas; i++){
         cout << "Nome: " << vetor[i].nome << endl;
@@ -12,13 +15,33 @@ void listarPessoas(Pessoa vetor[], int qtdPessoas){
 
     cout << "\n";
     cout << "Total de registros: " << qtdPessoas << endl;
+    cout << "\n";
 }
 
 int cadastrarPessoa(Pessoa vetor[], int tamanho, int qtd_pessoas, string baseDados) {
     cout << "Cadastrar pessoas...\n";
+ /*   if (qtd_pessoas == tamanho){
+        cout << "Vetor cheio, nao e possivel cadastrar mais pessoas\n";
+        return qtd_pessoas;
+    }*/
 
+    Pessoa novaPessoa;
+    cout << "Nome: ";
+    getline(cin, novaPessoa.nome);
+    cout << "Email: ";
+    getline(cin, novaPessoa.email);
 
+    vetor[qtd_pessoas] = novaPessoa;
+    qtd_pessoas++;
 
+    // Atualiza o arquivo CSV
+    ofstream arquivo(baseDados, ios::app);
+    if (arquivo.is_open()) {
+        arquivo << novaPessoa.nome << "," << novaPessoa.email << endl;
+        arquivo.close();
+    } else {
+        cerr << "Erro ao abrir o arquivo para escrita." << endl;
+    }
 
     return qtd_pessoas;
 }

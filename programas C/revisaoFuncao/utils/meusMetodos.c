@@ -5,7 +5,7 @@
 
 #include "metodos.h"
 
-// Conta o número de vogais em uma frase
+// Conta o numero de vogais em uma frase
 int contarVogais(const char *frase) {
     int totalVogais = 0;
     for (int i = 0; frase[i] != '\0'; i++) {
@@ -18,7 +18,7 @@ int contarVogais(const char *frase) {
     return totalVogais;
 }
 
-// Substitui todas as ocorrências de 'letra' por '@'
+// Substitui todas as ocorrï¿½ncias de 'letra' por '@'
 void trocarCaracter(char *frase, char letra) {
     for (int i = 0; frase[i] != '\0'; i++) {
         if (toupper(frase[i]) == toupper(letra)) {
@@ -27,7 +27,7 @@ void trocarCaracter(char *frase, char letra) {
     }
 }
 
-// Substitui todas as ocorrências de 'letraOrigem' por 'letraDestino'
+// Substitui todas as ocorrï¿½ncias de 'letraOrigem' por 'letraDestino'
 void trocarCaracterOrigemDestino(char *frase, char letraOrigem, char letraDestino) {
     for (int i = 0; frase[i] != '\0'; i++) {
         if (toupper(frase[i]) == toupper(letraOrigem)) {
@@ -36,7 +36,7 @@ void trocarCaracterOrigemDestino(char *frase, char letraOrigem, char letraDestin
     }
 }
 
-// Conta o número de palavras em uma frase
+// Conta o nï¿½mero de palavras em uma frase
 int contarPalavras(const char *frase) {
     int contagem = 0;
     int dentroPalavra = 0;
@@ -55,7 +55,7 @@ int contarPalavras(const char *frase) {
     return contagem;
 }
 
-// Converte uma frase para maiúsculas
+// Converte uma frase para maiï¿½sculas
 void paraMaiusculo(char *frase) {
     for (int i = 0; frase[i] != '\0'; i++) {
         frase[i] = toupper(frase[i]);
@@ -72,7 +72,7 @@ bool existeArquivo(const char *nomeArquivo) {
     return false;
 }
 
-// Lê o conteúdo de um arquivo e retorna como string alocada dinamicamente
+// Lï¿½ o conteï¿½do de um arquivo e retorna como string alocada dinamicamente
 char* copiarArquivo2String(const char *nomeArquivo) {
     FILE *arquivo = fopen(nomeArquivo, "r");
     if (arquivo == NULL) return NULL;

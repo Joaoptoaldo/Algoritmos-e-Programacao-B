@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string>
+#include<locale>
 #define TAM 10
 
 using namespace std;
@@ -7,8 +8,9 @@ using namespace std;
 #include "tipos.h"
 #include "metodos.h"
 
-
 int main(){
+    setlocale(LC_ALL, ""); 
+
     Pessoa vetor[TAM];
     int qtd_pessoas;
     string baseDados = "base.csv";
@@ -18,4 +20,3 @@ int main(){
 
     return 1;
 }
-
