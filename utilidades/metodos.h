@@ -3,6 +3,12 @@
 #include <string>
 #include <limits>
 
+void converterMaiusculo(string &texto) {
+    for (char &c : texto) {
+        c = toupper(static_cast<unsigned char>(c));
+    }
+}
+
 int conectarBase(Veiculo garagem[], string baseDados) {
     ifstream arquivo(baseDados);
     string linha;
@@ -13,24 +19,23 @@ int conectarBase(Veiculo garagem[], string baseDados) {
             stringstream ss(linha);
             string placa, data;
 
-            getline(ss, placa, ',');
-            getline(ss, data, ',');
+            getline(ss, placa, ','); // pega antes da vírgula
+            getline(ss, data);       // pega tudo até o final da linha
 
             garagem[qtd].placa = placa;
             garagem[qtd].dataEntrada = data;
+
+            // padroniza para maiusculas
+            converterMaiusculo(garagem[qtd].placa);
+
             qtd++;
         }
         arquivo.close();
-    //    cout << "Base conectada com sucesso. " << qtd << " veículos carregados.\n";
+        // cout << "Base conectada com sucesso. " << qtd << " veículos carregados.\n";
     } else {
         cout << "Nenhum arquivo encontrado. Uma nova base será criada.\n";
     }
     return qtd;
-}
-void converterMaiusculo(string &texto) {
-    for (char &c : texto) {
-        c = toupper(static_cast<unsigned char>(c));
-    }
 }
 
 
@@ -51,11 +56,14 @@ int entradaVeiculo(Veiculo garagem[], int qtd, string baseDados) {
 
     garagem[qtd++] = v;
 
+    // Salvar no arquivo
     ofstream arquivo(baseDados, ios::app);
     if (arquivo.is_open()) {
         arquivo << v.placa << "," << v.dataEntrada << endl;
         arquivo.close();
-    } else {
+
+    } 
+    else {
         cerr << "Erro ao salvar no arquivo!\n";
     }
 

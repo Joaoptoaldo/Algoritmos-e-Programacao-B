@@ -1,6 +1,4 @@
 /*
-- Desafio avaliativo:
-    Combinar os programas da Garagem e o da aula, refatorando-os de forma que toda a placa de carro que entre na garagem, além de ser salva no vetor/lista/garagem, também seja salva no arquivo.
     1) struct:
     ```
     typedef struct {
