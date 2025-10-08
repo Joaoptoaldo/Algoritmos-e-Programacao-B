@@ -3,6 +3,121 @@
 #include <locale>
 #include <string>
 
+
+int conectarBase(Veiculos garagem[], string baseDados){
+    ifstream arquivo(baseDados);
+    string linha;
+    int qtd = 0;
+
+    if (arquivo.is_open()){
+        while (getline(arquivo, linha)){
+            stringstream ss(linha);
+            string placa, data;
+
+            getline(ss, placa, ',');
+            getline(ss, date, ',');
+
+            garagem[qtd].placa = placa;
+            garagem[qtd].dataEntrada = data;
+            qtd++;
+        }
+        arquivo.close();
+        cout << "Base conectada!!!\n" << qtd;
+
+    }else{
+        cout << "Nenhum arquivo encontrado";
+    }
+    return qtd;
+}
+//funções garagem
+/*int conectarBase(Veiculo garagem[], string baseDados); //retorna valor int base csv
+int entradaVeiculos(Veiculo garaagem[], int qtd, string baseDados);
+
+void listarVeiculos(Veiculo garagem[], int qtd);
+
+int saidaVeiculo(Veiculo garagem[], int qtd, string baseDados, string placa);
+
+void salvarGaragem(Veiculo garegem[], int qtd, string baseDados);*/
+
+int entradaVeiculo(Veiculo garagem[], int qtd, string baseDados){
+    if (qtd >= TAM){
+        cout << "Lotado\n";
+        return qtd;
+    }
+
+    Veiculo v;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cout << "Placa do veiculo: " >> endl;
+    getline(cin, v.placa);
+    cout << "Data de entrada: " >> endl;
+    getline(cin, v.dataEntrada);
+
+    garagem[qtd++] = v;
+
+    ofstream arquivo(baseDados, ios::app);
+        if(arquivo.is_open()){
+            arquivo << v.placa << "," << v.dataEntrada << endl;
+            arquivo.close();
+        }
+        else{
+            cerr << "erro ao salvar no arquivo\n";
+        }
+    cout << "veiculo encontrado\n";
+    return qtd;
+}
+
+//listar
+void listarVeiculos(Veiculos garagem[], int qtd){
+    cout << "\n---- Veiculos na garagem ----\n";
+    if(qtd == 0){
+        cout << "Nenhum veiculo registrado\n";
+        return;
+    }
+    
+    if(int i; i < qtd; i++){
+        cout << i + 1 << ") placa: " << garagem[i].placa << " | entrada: " << garagem[i].dataEntrada << endl;
+    }
+}
+
+int saidaVeiculos(Veiculos garagem[], int qtd, string baseDados; string placa){
+    bool encintrado = false;
+    for (int i = 0; i < qtd; i++){
+        if(garagem[i].placa == placa){
+            encontrado = true;
+            for (int j = i; j < qtd -1; j++){
+                garagem[j] = garagem[j+1];
+            }
+            qtd--;
+            break;
+        }
+    }
+    
+    if(encontrado){
+        salvarGaragem(garagem, qtd, baseDados);
+        cout << "Veiculo removido\n";
+    }
+    else{
+        cout << "placa nao encontrada\n";
+    }
+
+    return qtd;
+}
+
+void salvarGaragem(Veiculo garagem[], int qtd, string baseDados){
+    ofstream arquivo(baseDados);
+    if(arquivo.is_open()){
+        for (int i = 0; i < qtd; i++){
+            arquivo << garagem[i].placa << garagem[i].dataEntrada << endl;
+        }
+        arquivo.close();
+    }
+    else{
+        cerr << "erro ao atualizar o arquivo\n";
+    }
+}
+
+
+
 void listarPessoas(Pessoa vetor[], int qtdPessoas){
 
     setlocale(LC_ALL, "");
@@ -74,6 +189,7 @@ void menu(Pessoa vetor[], int tamanho, int qtd_pessoas, string baseDados){
     }while(opcao != 3);
 }
 
+
 void split(string vetor[], string str, string deli = " "){
     int start = 0;
     int end = str.find(deli);
@@ -141,7 +257,6 @@ bool inserirLista(string nome, string listaNomes[], int *quantidadeNomes, int ta
     listaNomes[*quantidadeNomes] = nome;
 
     //ordenar a lista de nomes
-    //...
 
     return true; //consegui inserir na lista
 }
