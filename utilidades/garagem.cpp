@@ -23,29 +23,25 @@
 #include <iostream>
 #include <string>
 #include <limits>
+#define TAM 10
 
 using namespace std;
 
-#include "metodos.h"
 #include "tipos.h"
+#include "metodos.h"
 
-#define TAM 10
-
-
-//main
 int main(){
     Veiculo garagem[TAM];
     string baseDados = "garagem.csv";
     int qtd = 0;
     int opcao;
 
-     do {
+    do {
         cout << "\n---- MENU GARAGEM ----\n";
-        cout << "1) Entrada de veículo\n";
-        cout << "2) Listagem de veículos\n";
-        cout << "3) Saída de veículo\n";
-        cout << "4) Fim\n";
-        cout << "Escolha: ";
+        cout << "1) Entrada de veiculo\n";
+        cout << "2) Listagem de veiculos\n";
+        cout << "3) Saida de veiculo\n";
+        cout << "4) Sair\n";
         cin >> opcao;
 
         switch (opcao) {
@@ -57,23 +53,20 @@ int main(){
                 break;
             case 3: {
                 string placa;
-                cout << "Placa do veículo para saída: ";
+                cout << "Placa do veiculo para saida: ";
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 getline(cin, placa);
                 qtd = saidaVeiculo(garagem, qtd, baseDados, placa);
                 break;
             }
             case 4:
-                cout << "Encerrando programa...\n";
                 break;
             default:
-                cout << "Opção inválida!\n";
+                cout << "Opção invalida!\n";
         }
     } while (opcao != 4);
 
     qtd = conectarBase(garagem, baseDados);
     
     return 0;
-}
-//3) Saida veiculo (digitar a placa e retirar da garagem, tanto vetor, quanto arquivo
-    
+}   
