@@ -13,10 +13,11 @@
     Veiculo garagem[TAM];
     ```
     3) Menu (antes de executar o menu, conectarBase)
-       - 1) Entrada veiculo (digitar a placa e a data de entrada, mas pode-se capturar do sistema. Inserir no vetor e no arquivo)
-      -  2) Listagem veiculos
+        1) Entrada veiculo (digitar a placa e a data de entrada, mas pode-se capturar do sistema. Inserir no vetor e no arquivo)
+        2) Listagem veiculos
         3) Saida veiculo (digitar a placa e retirar da garagem, tanto vetor, quanto arquivo
-        4) Fim programa*/
+        4) Fim programa
+*/
 
 #include <iostream>
 #include <fstream>

@@ -1,6 +1,7 @@
 #include <sstream>
 #include <fstream>
 #include <string>
+#include <limits>
 
 int conectarBase(Veiculo garagem[], string baseDados) {
     ifstream arquivo(baseDados);
@@ -20,12 +21,18 @@ int conectarBase(Veiculo garagem[], string baseDados) {
             qtd++;
         }
         arquivo.close();
-        cout << "Base conectada com sucesso. " << qtd << " veículos carregados.\n";
+    //    cout << "Base conectada com sucesso. " << qtd << " veículos carregados.\n";
     } else {
         cout << "Nenhum arquivo encontrado. Uma nova base será criada.\n";
     }
     return qtd;
 }
+void converterMaiusculo(string &texto) {
+    for (char &c : texto) {
+        c = toupper(static_cast<unsigned char>(c));
+    }
+}
+
 
 int entradaVeiculo(Veiculo garagem[], int qtd, string baseDados) {
     if (qtd >= TAM) {
@@ -39,6 +46,8 @@ int entradaVeiculo(Veiculo garagem[], int qtd, string baseDados) {
     getline(cin, v.placa);
     cout << "Data de entrada: ";
     getline(cin, v.dataEntrada);
+    
+    converterMaiusculo(v.placa);
 
     garagem[qtd++] = v;
 
@@ -50,7 +59,7 @@ int entradaVeiculo(Veiculo garagem[], int qtd, string baseDados) {
         cerr << "Erro ao salvar no arquivo!\n";
     }
 
-  //  cout << "Veículo cadastrado com sucesso!\n";
+    cout << "Veiculo cadastrado com sucesso!\n";
     return qtd;
 }
 
@@ -63,8 +72,7 @@ void listarVeiculos(Veiculo garagem[], int qtd) {
     }
 
     for (int i = 0; i < qtd; i++) {
-        cout << i + 1 << ") Placa: " << garagem[i].placa
-             << " | Entrada: " << garagem[i].dataEntrada << endl;
+        cout << i + 1 << ") Placa do veiculo: " << garagem[i].placa << "| Data de entrada: " << garagem[i].dataEntrada << endl;
     }
 }
 
@@ -84,6 +92,7 @@ void salvarGaragem(Veiculo garagem[], int qtd, string baseDados) {
 //saida veiculos
 int saidaVeiculo(Veiculo garagem[], int qtd, string baseDados, string placa) {
     bool encontrado = false;
+    converterMaiusculo(placa);
     for (int i = 0; i < qtd; i++) {
         if (garagem[i].placa == placa) {
             encontrado = true;
@@ -99,7 +108,7 @@ int saidaVeiculo(Veiculo garagem[], int qtd, string baseDados, string placa) {
         salvarGaragem(garagem, qtd, baseDados);
         cout << "Veiculo removido com sucesso!\n";
     } else {
-        cout << "Placa não encontrada.\n";
+        cout << "Placa nao encontrada.\n";
     }
 
     return qtd;

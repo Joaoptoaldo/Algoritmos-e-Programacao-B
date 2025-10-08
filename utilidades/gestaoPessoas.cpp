@@ -9,8 +9,6 @@ using namespace std;
 #include "metodos.h"
 
 int main(){
-    setlocale(LC_ALL, ""); 
-
     Pessoa vetor[TAM];
     int qtd_pessoas;
     string baseDados = "base.csv";
