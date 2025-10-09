@@ -70,6 +70,7 @@ void salvarGaragem(Veiculo garagem[], int qtd, string baseDados) {
     }
 }
 
+
 int entradaVeiculo(Veiculo garagem[], int qtd, string baseDados) {
     if (qtd >= TAM) {
         cout << "Garagem cheia!\n";
@@ -77,17 +78,16 @@ int entradaVeiculo(Veiculo garagem[], int qtd, string baseDados) {
     }
 
     Veiculo v;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    cout << "Placa: ";
-    getline(cin, v.placa);
-    cout << "Data de entrada: ";
-    getline(cin, v.dataEntrada);
+     cout << "Placa: ";
+     getline(cin >> ws, v.placa);
+     cout << "Data de entrada: ";
+     getline(cin, v.dataEntrada);
     
-    trim(v.placa);
-    trim(v.dataEntrada);
-    converterMaiusculo(v.placa);
+     trim(v.placa);
+     trim(v.dataEntrada);
+     converterMaiusculo(v.placa);
 
-    garagem[qtd++] = v;
+     garagem[qtd++] = v;
 
     ofstream arquivo(baseDados, ios::app);
     if (arquivo.is_open()) {
