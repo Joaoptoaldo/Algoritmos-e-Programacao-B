@@ -36,6 +36,6 @@ int main(){
 
     qtd = conectarBase(garagem, baseDados);
     menuGaragem(garagem, TAM, qtd, baseDados);
-
+ 
     return 0;
 }   
