@@ -34,7 +34,7 @@ int conectarBase(Veiculo garagem[], string baseDados) {
     if (arquivo.is_open()) {
         while (getline(arquivo, linha)) {
             if (linha.empty()) continue; // pula linhas vazias
-            if (qtd >= TAM) break; // não excede o limite do vetor
+            if (qtd >= TAM) break; 
 
             stringstream ss(linha);
             string placa, data;
@@ -53,7 +53,7 @@ int conectarBase(Veiculo garagem[], string baseDados) {
         }
         arquivo.close();
     } else {
-        cout << "Nenhum arquivo encontrado. Uma nova base será criada.\n";
+        cout << "Nenhum arquivo encontrado!\n";
     }
     return qtd;
 }
@@ -79,7 +79,7 @@ int entradaVeiculo(Veiculo garagem[], int qtd, string baseDados) {
 
     Veiculo v;
      cout << "Placa: ";
-     getline(cin >> ws, v.placa);
+     getline(cin, v.placa);
      cout << "Data de entrada: ";
      getline(cin, v.dataEntrada);
     
@@ -135,7 +135,7 @@ void listarVeiculos(Veiculo garagem[], int qtd) {
     }
 
     for (int i = 0; i < qtd; i++) {
-        cout << i + 1 << ") Placa do veiculo: " << garagem[i].placa << " | Data de entrada: " << garagem[i].dataEntrada << endl;
+        cout << i + 1 << " - Placa do veiculo: " << garagem[i].placa << " | Data de entrada: " << garagem[i].dataEntrada << endl;
     }
 }
 
@@ -174,7 +174,6 @@ void menuGaragem(Veiculo garagem[], int tamanho, int qtd, string baseDados){
 
     }while(opcao != 4);
 }
-
 
 /*--------------------Gestão de Pessoas-------------------------------*/
 void listarPessoas(Pessoa vetor[], int qtdPessoas){
