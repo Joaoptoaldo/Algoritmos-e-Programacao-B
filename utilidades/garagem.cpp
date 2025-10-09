@@ -21,7 +21,6 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-#include <limits>
 #define TAM 10
 
 using namespace std;
@@ -35,10 +34,8 @@ int main(){
     int qtd = 0;
     int opcao;
 
-
     qtd = conectarBase(garagem, baseDados);
     menuGaragem(garagem, TAM, qtd, baseDados);
 
-    
     return 0;
 }   

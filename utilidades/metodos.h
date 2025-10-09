@@ -87,6 +87,14 @@ int entradaVeiculo(Veiculo garagem[], int qtd, string baseDados) {
      trim(v.dataEntrada);
      converterMaiusculo(v.placa);
 
+     // verifica se a placa já existe 
+    for (int i = 0; i < qtd; i++) {
+        if (garagem[i].placa == v.placa) {
+            cout << "Placa ja cadastrada!\n";
+            return qtd;
+        }
+    }
+
      garagem[qtd++] = v;
 
     ofstream arquivo(baseDados, ios::app);
