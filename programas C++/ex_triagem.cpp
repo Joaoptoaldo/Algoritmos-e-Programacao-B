@@ -72,7 +72,7 @@ int triagemSintomas() {
 Paciente cadastrarPaciente() {
     Paciente p;
     cout << "Nome do paciente: ";
-    cin.ignore(); // limpar buffer
+    cin.ignore();
     getline(cin, p.nome);
 
     cout << "Sexo (M/F): ";
