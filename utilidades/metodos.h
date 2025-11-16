@@ -26,6 +26,153 @@ void converterMaiusculo(string &texto) {
     }
 }
 
+/*--------------------Filmes-------------------------------*/
+int conectarBase(FilmeAssistido vetor[], string baseDados) {
+    ifstream arquivo(baseDados);
+    string linha;
+    int qtd = 0;
+
+    if (arquivo.is_open()) {
+        while (getline(arquivo, linha)) {
+            if (linha.empty()) continue; // pula linhas vazias
+            if (qtd >= TAM) break; 
+
+            stringstream ss(linha);
+            string data, titulo, notaStr, diretor, comentario;
+
+            if (!getline(ss, data, ',')) continue;
+            if (!getline(ss, titulo, ',')) continue;
+            if (!getline(ss, notaStr, ',')) continue;
+            if (!getline(ss, diretor, ',')) continue;
+            if (!getline(ss, comentario)) comentario = "";
+
+            trim(data);
+            trim(titulo);
+            trim(notaStr);
+            trim(diretor);
+            trim(comentario);
+
+            vetor[qtd].dataAssistido = data;
+            vetor[qtd].tituloFilme = titulo;
+            vetor[qtd].nota = stoi(notaStr);
+            vetor[qtd].diretor = diretor;
+            vetor[qtd].comentario = comentario;
+
+            qtd++;
+        }
+        arquivo.close();
+    } else {
+        cout << "Nenhum arquivo encontrado!\n";
+    }
+    return qtd;
+}
+
+void cadastrarFilme(FilmeAssistido vetor[], int tamanho, int qtd, string baseDados) {
+    cout << "Cadastrar filme...\n";
+    if (qtd == tamanho){
+        cout << "Vetor cheio, nao e possivel cadastrar mais filmes\n";
+        return;
+    }
+
+    FilmeAssistido novoFilme;
+    cout << "Titulo do filme: ";
+    getline(cin, novoFilme.tituloFilme);
+    cout << "Data assistido (DD/MM/AAAA): ";
+    getline(cin, novoFilme.dataAssistido);
+    cout << "Nota (1 a 5): ";
+    cin >> novoFilme.nota;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cout << "Diretor: ";
+    getline(cin, novoFilme.diretor);
+    cout << "Comentario: ";
+    getline(cin, novoFilme.comentario);
+
+    vetor[qtd] = novoFilme;
+    qtd++;
+
+    // Atualiza o arquivo CSV
+    ofstream arquivo(baseDados, ios::app);
+    if (arquivo.is_open()) {
+        arquivo << novoFilme.dataAssistido << "," << novoFilme.tituloFilme << "," << novoFilme.nota << "," << novoFilme.diretor << "," << novoFilme.comentario << endl;
+        arquivo.close();
+    } else {
+        cerr << "Erro ao abrir o arquivo para escrita." << endl;
+    }
+}
+
+void listarFilmes(FilmeAssistido vetor[], int qtd){
+    cout << "\n--- Filmes Assistidos ---\n";
+    if (qtd == 0) {
+        cout << "Nenhum filme registrado.\n";
+        return; 
+    }
+
+    for (int i = 0; i < qtd; i++) {
+        cout << i + 1 << " - Titulo: " << vetor[i].tituloFilme << " | Data: " << vetor[i].dataAssistido << " | Nota: " << vetor[i].nota << endl;
+    }
+}
+
+void removerFilme(FilmeAssistido vetor[], int qtd, string baseDados) {
+    int indice;
+    cout << "Indice do filme a ser removido (1 a " << qtd << "): ";
+    cin >> indice;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    if (indice < 1 || indice > qtd) {
+        cout << "Indice invalido.\n";
+        return;
+    }
+
+    for (int i = indice - 1; i < qtd - 1; i++) {
+        vetor[i] = vetor[i + 1];
+    }
+    qtd--;
+
+    ofstream arquivo(baseDados);
+    if (arquivo.is_open()) {
+        for (int i = 0; i < qtd; i++) {
+            arquivo << vetor[i].dataAssistido << "," << vetor[i].tituloFilme << "," << vetor[i].nota << "," << vetor[i].diretor << "," << vetor[i].comentario << endl;
+        }
+        arquivo.close();
+    } else {
+        cerr << "Erro ao atualizar o arquivo.\n";
+    }
+
+    cout << "Filme removido com sucesso!\n";
+}
+
+void menuFilmes(FilmeAssistido vetor[], int tamanho, int qtd, string baseDados){
+    int opcao;
+    do{
+        cout << "MENU\n";
+        cout << "1 - Cadastrar filme\n";
+        cout << "2 - Listar filmes\n";
+        cout << "3 - Remover filme\n";
+        cout << "4 - Sair\n";
+        cin >> opcao;
+        getchar();
+
+        switch (opcao){
+            case 1:
+                cadastrarFilme(vetor, tamanho, qtd, baseDados);
+                break;            
+            case 2:                
+                listarFilmes(vetor, qtd);
+                break;
+            case 3:                
+                removerFilme(vetor, qtd, baseDados);
+                break;
+            case 4:
+                break;
+            default:
+                cout << "Opcao invalida\n";
+                break;
+            
+        }
+    }while(opcao != 4);
+}
+        
+/*--------------------Garagem-------------------------------*/
 int conectarBase(Veiculo garagem[], string baseDados) {
     ifstream arquivo(baseDados);
     string linha;
