@@ -12,17 +12,19 @@ typedef struct {
 
 typedef struct {
     string placa;
-    string dataEntrada;
     string modelo;
+    string cor;
     string fabricante;
+    int ano_fabricacao;
     string proprietario;
-    string comentario;
+    string dataEntrada;
+    string dataSaida;
 } Veiculo;
 
 typedef struct {
-    std::string dataAssistido;
-    std::string tituloFilme;
+    string dataAssistido;
+    string tituloFilme;
     int nota;
-    std::string diretor;
-    std::string comentario;
+    string diretor;
+    string comentario;
 } FilmeAssistido;
