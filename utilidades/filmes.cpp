@@ -15,7 +15,7 @@ int main(){
     int qtd = 0;
     int opcao;
 
-    qtd = conectarBase(filmes, baseDados);
+    qtd = conectarBase(filmes, baseDados, TAM);
     menuFilmes(filmes, TAM, qtd, baseDados);
  
     return 0;
