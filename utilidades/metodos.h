@@ -36,11 +36,11 @@ void split(string vetor[], string str, string deli = " "){
          start = end + deli.size();
         end = str.find(deli, start);
     }
-    //vetor[i] = str.substr(start, end - start);
+    vetor[i] = str.substr(start, end - start);
     vetor[i] = str.substr(start);
  }
 
-/*--------------------Filmes-------------------------------*/
+/*--------------------filmes-------------------------------*/
 void listarFilmes(FilmeAssistido vetor[], int qtd){
     cout << "\n--- Filmes Assistidos ---\n";
     for(int i = 0; i < qtd; i++){
@@ -56,10 +56,10 @@ void listarFilmes(FilmeAssistido vetor[], int qtd){
 
 int cadastrarFilme(FilmeAssistido vetor[], int tamanho, int qtd, string baseDados){
     cout << "\nCadastrar filme\n";
-    /*if(qtd == tamanho) {
+    if(qtd == tamanho) {
         cout << "Vetor cheio, nao e possivel cadastrar mais filmes\n";
         return qtd;
-    }*/
+    }
 
     FilmeAssistido novo;
     cout << "Titulo do filme: ";
@@ -156,7 +156,8 @@ int removerFilme(FilmeAssistido vetor[], int qtd, string baseDados, string nomeF
             cout << "Filme removido com sucesso!\n";
         else
             cout << "Filme nao encontrado.\n";
-    }else{
+        }
+        else{
         cerr << "Erro ao abrir o arquivo para escrita.\n";
     }
     return qtd;
@@ -184,7 +185,7 @@ void menuFilmes(FilmeAssistido vetor[], int tamanho, int qtd, string baseDados){
                 break;
             
             case 3:
-         {
+            {
                 string nomeFilme;
                 cout << "Nome do filme para remover: ";
                 getline(cin, nomeFilme);
@@ -208,11 +209,11 @@ void menuFilmes(FilmeAssistido vetor[], int tamanho, int qtd, string baseDados){
     }while(opcao != 5);
 }
         
-/*--------------------Garagem-------------------------------*/
+/*--------------------garagem-------------------------------*/
 int conectarBase(Veiculo garagem[], string baseDados) {
     ifstream arquivo(baseDados);
-    string linha;
-    int qtd = 0;
+        string linha;
+        int qtd = 0;
 
     if (arquivo.is_open()) {
         while (getline(arquivo, linha)) {
@@ -366,7 +367,7 @@ void menuGaragem(Veiculo garagem[], int tamanho, int qtd, string baseDados){
     }while(opcao != 4);
 }
 
-/*--------------------Gestão de Pessoas-------------------------------*/
+/*--------------------gestaoPessoas-------------------------------*/
 void listarPessoas(Pessoa vetor[], int qtdPessoas){
 
     cout << "Listar pessoas..." << endl;
