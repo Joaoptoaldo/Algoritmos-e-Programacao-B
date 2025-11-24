@@ -13,10 +13,9 @@ int main(){
     FilmeAssistido filmes[TAM];
     string baseDados = "baseDados.csv";
     int qtd = 0;
-    int opcao;
 
-    qtd = conectarBase(filmes, baseDados, TAM);
-    menuFilmes(filmes, TAM, qtd, baseDados);
+    qtd = conectarBase(filmes, baseDados, TAM);//carrega os filmes do arquivo para o vetor e retorna a quantidade de filmes
+    menuFilmes(filmes, TAM, qtd, baseDados);//chama o menu de filmes
  
     return 0;
 }   
